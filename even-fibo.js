@@ -5,13 +5,38 @@
 By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even - valued terms.
 
 */
+// http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html#calcrsqrt
 
 const PHI = (1 + Math.sqrt(5))/2;
 function fibo(num){
     let fibo = 0;
-    fibo = Math.round(Math.pow(PHI, num) / Math.sqrt(5);) // http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html#calcrsqrt
+    fibo = Math.round(Math.pow(PHI, num) / Math.sqrt(5)); 
     return fibo;
 }
 
 
-console.log(fibo(6));
+function arrayDePares(t){
+    let pares = [];
+    for(let i = 0; i <= t; i++){
+        if (fibo(i) % 2 == 0){
+            
+            if(fibo(i) > 4000000) break;
+            pares.push(fibo(i));
+        }
+    }
+    return pares;
+}
+
+function somaArray(array) {
+    let soma = 0;
+    for (let i = 0; i < array.length; i++) {
+        soma += array[i];
+
+    }
+    return soma;
+}
+
+let resposta = 0
+
+resposta = somaArray(arrayDePares(10000));
+console.log(resposta)
